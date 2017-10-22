@@ -1,0 +1,23 @@
+/*!
+ * ANSELMI404 (http://anselmi404.com.ve)
+ * Copyright 2017-2018.
+ * Licensed under MIT (https://github.com/Alzheimer10/base-template/blob/master/LICENSE)
+ */
+
+// Core variables, functions, and mixins
+@import "cei/variables";
+@import "cei/functions";
+@import "cei/mix";
+
+// Reset and dependencies
+
+// Core CSS
+@import "cei/initial";
+@import "cei/shadow";
+@import "cei/helper";
+
+// Sections
+@import "cei/sections/slider";
+
+// Components w/ JavaScript
+@import "cei/loaders";

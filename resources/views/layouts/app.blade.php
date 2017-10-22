@@ -19,6 +19,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('resources/ionicons/ionicons.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/cei.css') }}">
+
     @yield('css')
 </head>
 
@@ -47,21 +49,12 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="{{ asset('img/default_avatar.jpg') }}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
-                                <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
-                                         class="img-circle" alt="User Image"/>
-                                    <p>
-                                        {!! Auth::user()->name !!}
-                                        <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
-                                    </p>
-                                </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
