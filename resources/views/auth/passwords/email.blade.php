@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ Config::get('app.locale') }}">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>{{Config::get('app.name')}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
