@@ -1,23 +1,47 @@
-/*!
- * ANSELMI404 (http://anselmi404.com.ve)
- * Copyright 2017-2018.
- * Licensed under MIT (https://github.com/Alzheimer10/base-template/blob/master/LICENSE)
- */
+@import "../resources/bootstrap/css/bootstrap.min";
+@import "../resources/font-awesome/css/font-awesome.min";
+@import "../resources/select/css/select2.min";
+@import "../resources/AdminLTE/AdminLTE.min";
+@import "../resources/AdminLTE/skins/_all-skins.min";
+@import "../resources/AdminLTE/all";
+@import "../resources/ionicons/ionicons.min";
+@import "../resources/dropzone/dropzone";
 
-// Core variables, functions, and mixins
-@import "cei/variables";
-@import "cei/functions";
-@import "cei/mix";
+@import "../resources/tippy/tippy";
+@import "../resources/bootstrap-select/bootstrap-select.min";
+@import "../resources/dataTables/jquery.dataTables";
+@import "loanding";
 
-// Reset and dependencies
+@import "../resources/toggle/toggle.min";
 
-// Core CSS
-@import "cei/initial";
-@import "cei/shadow";
-@import "cei/helper";
+.li-search{
+    padding: 0px 10px;   
+}
+.li-search li a span{
+    margin-left: 4px;
+}
+.li-search li{
+    color:white;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
 
-// Sections
-@import "cei/sections/slider";
-
-// Components w/ JavaScript
-@import "cei/loaders";
+.dataTables_filter{
+    background: #ecf0f5;
+    border-radius: 10px;
+    padding: 6px 10px 0px 12px;
+}
+.dataTables_filter input{
+    border-radius: 7px;
+    border: 1px solid #878a8c;
+}
+.loanding{
+    position: relative;
+    overflow: hidden;
+    padding-top: 155px !important;
+    overflow-y: hidden;
+}
+.loanding-hide{
+    display: none;
+}

@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $estudiantes = \App\Models\estudiante::orderBy('updated_at', 'DESC')->limit(4)->get();
+        return view('home')->with('lastEstudiantes', $estudiantes);
+    }
+
+    public function documentation($seccion){
+        return view('documentacion.documentacion');
     }
 }

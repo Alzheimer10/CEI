@@ -1,3 +1,4 @@
+@inject('appController','App\Services\appController')
 <!DOCTYPE html>
 <html lang="{{ Config::get('app.locale') }}">
 <head>
@@ -5,127 +6,115 @@
     <title>{{Config::get('app.name')}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('resources/bootstrap/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('resources/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/select/css/select2.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('resources/AdminLTE/AdminLTE.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('resources/AdminLTE/skins/_all-skins.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/AdminLTE/_all.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('resources/ionicons/ionicons.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/cei.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/cei.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('resources/dropzone/dropzone.css') }}"> --}}
     @yield('css')
-</head>
+<style>
+    .skin-blue .main-header .navbar,.skin-blue .main-header .logo{
+        background: transparent;
+    }
+    .skin-blue .main-header .navbar .sidebar-toggle:hover,.skin-blue .main-header .logo:hover {
+        background-color: #367fa980;
+    }
+    .main-header{
+        background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+        background-size: 400% 400%;
 
+    }
+
+    @-webkit-keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    @-moz-keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+</style>
+</head>
 <body class="skin-blue sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
-
             <!-- Logo -->
-            <a href="#" class="logo">
-                <b>{{ Config::get('app.name') }}</b>
-            </a>
-
+            <a href="{!! url('/') !!}" class="logo" style="padding: 0px;position: absolute;"> <b>{{ Config::get('app.name') }}</b> </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" title="Ocultar/Mostrar Menu lateral" data-position="right">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- User Account Menu -->
+                        <li class="user user-menu">
+                            <a href="{!! url('/logout') !!}" 
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sección
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#">
                                 <!-- The user image in the navbar-->
-                                <img src="{{ asset('img/default_avatar.jpg') }}"
-                                     class="user-image" alt="User Image"/>
+                                <img src="{{ asset('img/default_avatar.jpg') }}" class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Sign out
-                                        </a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-
         <!-- Left side column. contains the logo and sidebar -->
         @include('layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            @yield('content')
+        <div class="content-wrapper loanding">
+            @include('layouts.loanding')
+            <div class="loanding-hide">
+                @yield('content')
+            </div>
         </div>
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © {{ date('Y') }}</strong> All rights reserved.
+            <strong>Copyright © {{ date('Y') }} </strong> All rights reserved. ( Carlos Anselmi & Antony Ruth | Facyt )
         </footer>
-
     </div>
+    @include('modal')
 @else
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{!! url('/') !!}">
-                    InfyOm Generator
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{!! url('/home') !!}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    <li><a href="{!! url('/login') !!}">Login</a></li>
-                    <li><a href="{!! url('/register') !!}">Register</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -135,16 +124,19 @@
             </div>
         </div>
     </div>
-    @endif
-
+@endif
     <!-- jQuery 3.1.1 -->
-    <script src="{{ asset('resources/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('resources/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('resources/select/js/select2.min.js') }}"></script>
-    <script src="{{ asset('resources/icheck.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('js/app.min.js') }}"></script>
-
+    <script src="{{ asset('js/koalaCEI.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    {{-- <script src="{{ asset('resources/dropzone/dropzone.js') }}"></script> --}}
     @yield('scripts')
+    <script>
+        tippy('*:not(.help)',{
+            size: 'big'
+        });
+        tippy('#string_search',{
+            trigger: 'click'
+        })
+    </script>
 </body>
 </html>

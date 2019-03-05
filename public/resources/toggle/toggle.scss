@@ -1,0 +1,243 @@
+﻿/*! toggle.css v1.0.0 | WTFPL | github.com/qbicfeet/toggle.css */
+
+//  VARIABLES
+//  =========
+
+$brands: (
+//  name        background-color        border-color
+    (default,   #fff,                   #ccc),
+    (primary,   darken(#428bca, 6.5%),  darken(darken(#428bca, 6.5%), 5%)),
+    (success,   #5cb85c,                darken(#5cb85c, 5%)),
+    (info,      #5bc0de,                darken(#5bc0de, 5%)),
+    (warning,   #f0ad4e,                darken(#f0ad4e, 5%)),
+    (danger,    #d9534f,                darken(#d9534f, 5%))
+);
+
+$sizes: (
+//  name    border-radius   font-size   line-height     padding:before  padding:after   top     width:before    width:after
+    (sm,    3px,            12px,       1.5,            5px 10px,       4px 0,          0,      60px,           24px),
+    (md,    4px,            14px,       1.428571429,    6px 0,          6px 0,          1px,    80px,           32px),
+    (lg,    6px,            18px,       1.3333333,      10px 16px,      12px 0,         2px,    120px,          48px)
+);
+
+$default-background-color: #ddd;
+$default-border-color: transparent;
+
+$default-border-radius: 3px;
+$default-font-size: 12px;
+$default-line-height: 1.5;
+$default-padding-before: 1px 5px;
+$default-padding-after: 0;
+$default-top: 0;
+$default-width-before: 40px;
+$default-width-after: 16px;
+
+//  DEFAULTS
+//  ========
+
+input[type="checkbox"].tgl {
+    display: none;
+}
+
+.tgl + label {
+    cursor: pointer;
+    font-weight: 400;
+    left: 10px;
+    margin-right: 10px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tgl + label:before {
+    background-color: $default-background-color;
+    border-radius: $default-border-radius;
+    border: 1px solid $default-border-color;
+    content: '\a0';
+    display: inline-block;
+    font-size: $default-font-size;
+    left: -10px;
+    line-height: $default-line-height;
+    margin-bottom: 0;
+    padding: $default-padding-before;
+    position: relative;
+    top: $default-top;
+    white-space: pre;
+    width: $default-width-before;
+}
+
+.tgl + label:active:before {
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.tgl + label:after {
+    background: #fff;
+    border-radius: $default-border-radius;
+    border: 1px solid $default-background-color;
+    content: '\a0';
+    left: -10px;
+    padding: $default-padding-after;
+    position: absolute;
+    top: $default-top;
+    -webkit-transition: left .2s ease;
+    -moz-transition: left .2s ease;
+    -o-transition: left .2s ease;
+    transition: left .2s ease;
+    white-space: pre;
+    width: $default-width-after;
+}
+
+.tgl:checked + label:after {
+    left: $default-width-before - 10px - $default-width-after;
+}
+
+.tgl[disabled] + label {
+    cursor: not-allowed;
+}
+
+.tgl[disabled] + label:before {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+
+/*  BOOTSTRAP OVERRIDES
+    ===================  */
+
+.checkbox .tgl + label:before {
+    margin-left: -20px;
+}
+
+.checkbox label .tgl + label {
+    left: -10px;
+}
+
+/*  SIZES
+    =====  */
+
+@each $name, $border-radius, $font-size, $line-height, $padding-before, $padding-after, $top, $width-before, $width-after in $sizes {
+    .tgl-#{$name} + label:before {
+        border-radius: $border-radius;
+        font-size: $font-size;
+        line-height: $line-height;
+        padding: $padding-before;
+        top: $top;
+        width: $width-before;
+    }
+
+    .tgl-#{$name} + label:after {
+        border-radius: $border-radius;
+        padding: $padding-after;
+        top: $top;
+        width: $width-after;
+    }
+
+    .tgl-#{$name}:checked + label:after {
+        left: $width-before - 10px - $width-after;
+    }
+}
+
+/*  COLORS
+    ======  */
+
+@each $name, $background-color, $border-color in $brands {
+    .tgl-#{$name} + label:before,
+    .tgl-on-#{$name}:checked + label:before {
+        background-color: $background-color;
+        border-color: $border-color;
+    }
+
+    .tgl-#{$name} + label:after,
+    .tgl-on-#{$name}:checked + label:after {
+        border-color: $border-color;
+    }
+
+    .tgl-#{$name} + label:focus:before,
+    .tgl-on-#{$name}:checked + label:focus:before,
+    label:focus .tgl-#{$name} + label:before,
+    label:focus .tgl-on-#{$name}:checked + label:before {
+        background-color: darken($background-color, 10%);
+        border-color: darken($border-color, 25%);
+    }
+
+    .tgl-#{$name} + label:focus:after,
+    .tgl-on-#{$name}:checked + label:focus:after,
+    label:focus .tgl-#{$name} + label:after,
+    label:focus .tgl-on-#{$name}:checked + label:after {
+        border-color: darken($border-color, 25%);
+    }
+
+    .tgl-#{$name} + label:hover:before,
+    .tgl-#{$name} + label:active:before,
+    .tgl-on-#{$name}:checked + label:hover:before,
+    .tgl-on-#{$name}:checked + label:active:before,
+    label:hover .tgl-#{$name} + label:before,
+    label:active .tgl-#{$name} + label:before,
+    label:hover .tgl-on-#{$name}:checked + label:before,
+    label:active .tgl-on-#{$name}:checked + label:before {
+        background-color: darken($background-color, 10%);
+        border-color: darken($border-color, 12%);
+    }
+
+    .tgl-#{$name} + label:hover:after,
+    .tgl-#{$name} + label:active:after,
+    .tgl-on-#{$name}:checked + label:hover:after,
+    .tgl-on-#{$name}:checked + label:active:after,
+    label:hover .tgl-#{$name} + label:after,
+    label:active .tgl-#{$name} + label:after,
+    label:hover .tgl-on-#{$name}:checked + label:after,
+    label:active .tgl-on-#{$name}:checked + label:after {
+        border-color: darken($border-color, 12%);
+    }
+
+    .tgl-#{$name} + label:active:focus:before,
+    .tgl-#{$name} + label:active:hover:before,
+    .tgl-on-#{$name}:checked + label:active:focus:before,
+    .tgl-on-#{$name}:checked + label:active:hover:before,
+    label:active:focus .tgl-#{$name} + label:before,
+    label:active:hover .tgl-#{$name} + label:before,
+    label:active:focus .tgl-on-#{$name}:checked + label:before,
+    label:active:hover .tgl-on-#{$name}:checked + label:before {
+        background-color: darken($background-color, 17%);
+        border-color: darken($border-color, 25%);
+    }
+
+    .tgl-#{$name} + label:active:focus:after,
+    .tgl-#{$name} + label:active:hover:after,
+    .tgl-on-#{$name}:checked + label:active:focus:after,
+    .tgl-on-#{$name}:checked + label:active:hover:after,
+    label:active:focus .tgl-#{$name} + label:after,
+    label:active:hover .tgl-#{$name} + label:after,
+    label:active:focus .tgl-on-#{$name}:checked + label:after,
+    label:active:hover .tgl-on-#{$name}:checked + label:after {
+        border-color: darken($border-color, 25%);
+    }
+
+    .tgl-#{$name}[disabled] + label:focus:before,
+    .tgl-#{$name}[disabled] + label:hover:before,
+    .tgl-on-#{$name}[disabled]:checked + label:focus:before,
+    .tgl-on-#{$name}[disabled]:checked + label:hover:before,
+    label:focus .tgl-#{$name}[disabled] + label:before,
+    label:hover .tgl-#{$name}[disabled] + label:before,
+    label:focus .tgl-on-#{$name}[disabled]:checked + label:before,
+    label:hover .tgl-on-#{$name}[disabled]:checked + label:before {
+        background-color: $background-color;
+        border-color: $border-color;
+    }
+
+    .tgl-#{$name}[disabled] + label:focus:after,
+    .tgl-#{$name}[disabled] + label:hover:after,
+    .tgl-on-#{$name}[disabled]:checked + label:focus:after,
+    .tgl-on-#{$name}[disabled]:checked + label:hover:after,
+    label:focus .tgl-#{$name}[disabled] + label:after,
+    label:hover .tgl-#{$name}[disabled] + label:after,
+    label:focus .tgl-on-#{$name}[disabled]:checked + label:after,
+    label:hover .tgl-on-#{$name}[disabled]:checked + label:after {
+        border-color: $border-color;
+    }
+}

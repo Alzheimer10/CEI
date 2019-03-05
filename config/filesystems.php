@@ -45,9 +45,15 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path(),
         ],
 
+
+        'boleta' => [
+            'driver' => 'local',
+            'root' => public_path().'/documentos/boletas',
+        ],
+        
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

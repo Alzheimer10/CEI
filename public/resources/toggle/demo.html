@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>toggle.css: Bootstrap-style checkbox hack by qbicfeet</title>
+    <meta name="description" content="toggle.css: Bootstrap-style checkbox hack by qbicfeet">
+    <meta name="author" content="qbicfeet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="toggle.min.css" />
+
+    <style>
+        .panel-footer > code {
+            background: none;
+            padding: 0;
+            white-space: pre-wrap;
+        }
+        input[type="email"] {
+            max-width: 540px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header">
+                    <h1>toggle.css <small>Bootstrap-style checkbox hack by <a href="https://twitter.com/qbicfeet">@qbicfeet</a></small></h1>
+                </div>
+                <h2>Basic usage</h2>
+                <p>
+                    To use the toggle switch-style checkboxes, simply add <code>.tgl</code> to a checkbox <code>&lt;input></code> element
+                    which has its <code>id</code> attribute set to a unique identifier and is followed by a <code>&lt;label></code> element
+                    which has its <code>for</code> attribute set to the same identifier.
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <input type="checkbox" class="tgl tgl-default" id="basic-1" />
+                        <label for="basic-1">Toggle me!</label>
+                    </div>
+                    <div class="panel-footer"><code>&lt;input type="checkbox" class="tgl tgl-default" id="basic-1" />
+&lt;label for="basic-1">Toggle me!&lt;/label></code></div>
+                </div>
+                <h2>Stacked checkboxes</h2>
+                <p>
+                    Just like regular Bootstrap checkboxes, toggle switch-style checkboxes can be stacked vertically by wrapping them in
+                    <code>&lt;div></code> elements that use the <code>.checkbox</code> class. The checkboxes can also optionally be wrapped
+                    inside <code>&lt;label></code> elements with no adverse effects.
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-default" id="stacked-1" />
+                            <label for="stacked-1">Vertical stacking!</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="tgl tgl-default" id="stacked-2" />
+                                <label for="stacked-2">I'm inside a label!</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><code>&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-default" id="stacked-1" />
+    &lt;label for="stacked-1">Vertical stacking!&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;label>
+        &lt;input type="checkbox" class="tgl tgl-default" id="stacked-2" />
+        &lt;label for="stacked-2">I'm inside a label!&lt;/label>
+    &lt;/label>
+&lt;/div></code></div>
+                </div>
+                <h2>Colors</h2>
+                <p>
+                    Like most things Bootstrap, these checkboxes can use any of the default contextual colors.
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl" id="colors-1" />
+                            <label for="colors-1"><mark>default</mark></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-default" id="colors-2" />
+                            <label for="colors-2"><code>.tgl-default</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-primary" id="colors-3" />
+                            <label for="colors-3"><code>.tgl-primary</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-success" id="colors-4" />
+                            <label for="colors-4"><code>.tgl-success</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-info" id="colors-5" />
+                            <label for="colors-5"><code>.tgl-info</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-warning" id="colors-6" />
+                            <label for="colors-6"><code>.tgl-warning</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-danger" id="colors-7" />
+                            <label for="colors-7"><code>.tgl-success</code></label>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><code>&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl" id="colors-1" />
+    &lt;label for="colors-1">&lt;mark>default&lt;/mark>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-default" id="colors-2" />
+    &lt;label for="colors-2">&lt;code>.tgl-default&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-primary" id="colors-3" />
+    &lt;label for="colors-3">&lt;code>.tgl-primary&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-success" id="colors-4" />
+    &lt;label for="colors-4">&lt;code>.tgl-success&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-info" id="colors-5" />
+    &lt;label for="colors-5">&lt;code>.tgl-info&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-warning" id="colors-6" />
+    &lt;label for="colors-6">&lt;code>.tgl-warning&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-danger" id="colors-7" />
+    &lt;label for="colors-7">&lt;code>.tgl-success&lt;/code>&lt;/label>
+&lt;/div></code></div>
+                </div>
+                <h2>Mixed colors</h2>
+                <p>
+                    Toggle switch-style checkboxes can be set to use different colors for their checked state by adding
+                    <code>.tgl-on-*</code> (replace the asterisk with any of the contextual colors names).
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-default tgl-on-primary" id="mixed-1" />
+                            <label for="mixed-1"><code>.tgl-default .tgl-on-primary</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-warning tgl-on-info" id="mixed-2" />
+                            <label for="mixed-2"><code>.tgl-warning .tgl-on-info</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-danger tgl-on-success" id="mixed-3" />
+                            <label for="mixed-3"><code>.tgl-danger .tgl-on-success</code></label>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><code>&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-default tgl-on-primary" id="mixed-1" />
+    &lt;label for="mixed-1">&lt;code>.tgl-default .tgl-on-primary&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-warning tgl-on-info" id="mixed-2" />
+    &lt;label for="mixed-2">&lt;code>.tgl-warning .tgl-on-info&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-danger tgl-on-success" id="mixed-3" />
+    &lt;label for="mixed-3">&lt;code>.tgl-danger .tgl-on-success&lt;/code>&lt;/label>
+&lt;/div></code></div>
+                </div>
+                <h2>Sizes</h2>
+                <p>
+                    To be entirely honest these larger sizes make the checkboxes look clumsy and awkward and I'm not entirely sure why
+                    anyone would ever use them willingly, but for the sake of completion, the optional classes <code>.tgl-sm</code>,
+                    <code>.tgl-md</code> and <code>.tgl-lg</code> have been included. These sizes correspond to <code>.btn-sm</code>, the
+                    default button size and <code>.btn-lg</code> (the default checkbox size is approximately the same size as
+                    <code>.btn-xs</code>).
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-primary" id="sizes-1" />
+                            <label for="sizes-1"><mark>default</mark></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-primary tgl-sm" id="sizes-2" />
+                            <label for="sizes-2"><code>.tgl-sm</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-primary tgl-md" id="sizes-3" />
+                            <label for="sizes-3"><code>.tgl-md</code></label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="tgl tgl-primary tgl-lg" id="sizes-4" />
+                            <label for="sizes-4"><code>.tgl-lg</code></label>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><code>&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-primary" id="sizes-1" />
+    &lt;label for="sizes-1">&lt;mark>default&lt;/mark>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-primary tgl-sm" id="sizes-2" />
+    &lt;label for="sizes-2">&lt;code>.tgl-sm&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-primary tgl-md" id="sizes-3" />
+    &lt;label for="sizes-3">&lt;code>.tgl-md&lt;/code>&lt;/label>
+&lt;/div>
+&lt;div class="checkbox">
+    &lt;input type="checkbox" class="tgl tgl-primary tgl-lg" id="sizes-4" />
+    &lt;label for="sizes-4">&lt;code>.tgl-lg&lt;/code>&lt;/label>
+&lt;/div></code></div>
+                </div>
+                <h2>Form example</h2>
+                <p>
+                    As you can see below, the toggle switch-style checkboxes integrate seamlessly with regular Bootstrap form controls.
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="txt-email">Email address</label>
+                                <input type="email" class="form-control" id="txt-email" placeholder="Email" />
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="tgl tgl-default tgl-on-success" id="form-1" checked disabled />
+                                <label for="form-1">I agree to the terms and conditions</label>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="tgl tgl-default tgl-on-success" id="form-2" />
+                                <label for="form-2">Sign me up for the monthly newsletter</label>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="tgl tgl-default tgl-on-danger" id="form-3" />
+                                <label for="form-3">Add me to the FBI watchlist</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="panel-footer"><code>&lt;form>
+    &lt;div class="form-group">
+        &lt;label for="txt-email">Email address&lt;/label>
+        &lt;input type="email" class="form-control" id="txt-email" placeholder="Email" />
+    &lt;/div>
+    &lt;div class="checkbox">
+        &lt;input type="checkbox" class="tgl tgl-default tgl-on-success" id="form-1" checked disabled />
+        &lt;label for="form-1">I agree to the terms and conditions&lt;/label>
+    &lt;/div>
+    &lt;div class="checkbox">
+        &lt;input type="checkbox" class="tgl tgl-default tgl-on-success" id="form-2" />
+        &lt;label for="form-2">Sign me up for the monthly newsletter&lt;/label>
+    &lt;/div>
+    &lt;div class="checkbox">
+        &lt;input type="checkbox" class="tgl tgl-default tgl-on-danger" id="form-3" />
+        &lt;label for="form-3">Add me to the FBI watchlist&lt;/label>
+    &lt;/div>
+    &lt;button type="submit" class="btn btn-primary">Submit&lt;/button>
+&lt;/form></code></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
